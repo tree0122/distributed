@@ -1,0 +1,16 @@
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: "*"
+server:
+  port: 8080
+spring:
+  application:
+    name: licensingservice
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8888
