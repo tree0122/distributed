@@ -1,0 +1,6 @@
+trace:
+  property: "I AM THE DEFAULT"
+mysql:
+  url: jdbc:mysql://10.0.1.138:3306/test?useUnicode=true
+  usename: root
+  password: 123456
