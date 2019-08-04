@@ -1,5 +1,6 @@
 package com.tree.cloud.helloservice.controller;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -18,7 +19,7 @@ public class HelloController {
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public String index(){
         ServiceInstance instance = discoveryClient.getLocalServiceInstance();
-        log.info("serviceInstance: {}", instance);
+        log.info("serviceInstance: {}", JSON.toJSONString(instance));
         return "hello world";
     }
 }
