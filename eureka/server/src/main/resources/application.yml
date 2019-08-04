@@ -1,11 +1,43 @@
-server:
-  port: 1111
-
+spring:
+  application:
+    name: @project.name@
+  profiles:
+    active: default
 eureka:
   instance:
     hostname: localhost
+
+# single node conf
+---
+spring:
+  profiles: default
+server:
+  port: 1111
+eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-    serverUrl:
+    service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+# peer1 conf
+---
+spring:
+  profiles: peer1
+server:
+  port: 1111
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1112/eureka/
+
+# peer2 conf
+---
+spring:
+  profiles: peer2
+server:
+  port: 1112
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1111/eureka/
