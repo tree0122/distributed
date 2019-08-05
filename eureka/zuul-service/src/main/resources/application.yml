@@ -1,0 +1,21 @@
+
+spring:
+  application:
+    name: @project.name@
+server:
+  port: 9090
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1112/eureka/
+
+zuul:
+  routes:
+    # 传统方式的路由
+    old:
+      path: /old/**
+      url: http://localhost:8083/
+    # 面向服务的路由
+    hello-service:
+      path: /hello/**
+      serviceId: hello-service
