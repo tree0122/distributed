@@ -1,7 +1,11 @@
-
 spring:
   application:
     name: @project.name@
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      percentage: 1
 server:
   port: 9090
 eureka:
@@ -26,6 +30,6 @@ zuul:
       path: /test/**
       url: forward:/local
   # zuul对所有服务不自动创建路由规则, 仅对配置文件中的映射规则生效
-  ignored-patterns: *
+  ignored-services: '*'
   # 全局设置cookie可被下游访问
   #sensitive-headers:
