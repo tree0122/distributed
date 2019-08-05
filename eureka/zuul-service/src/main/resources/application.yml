@@ -8,7 +8,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:1112/eureka/
-
 zuul:
   routes:
     # 传统方式的路由
@@ -19,3 +18,14 @@ zuul:
     hello-service:
       path: /hello/**
       serviceId: hello-service
+#      customSensitiveHeaders: true
+    # 面向服务路由的简单版
+    feign-service: /user/**
+    # 本地跳转
+    test:
+      path: /test/**
+      url: forward:/local
+  # zuul对所有服务不自动创建路由规则, 仅对配置文件中的映射规则生效
+  ignored-patterns: *
+  # 全局设置cookie可被下游访问
+  #sensitive-headers:
